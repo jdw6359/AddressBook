@@ -15,6 +15,38 @@ class Contact
 	end 
 
 
+	def to_s(format='full_name')
+		case format
+		when 'full_name'
+			full_name
+		when 'last_first'
+			last_first
+		when 'first'
+			first_name
+		when 'last'
+			last_name
+		else
+			first_last
+		end 
+	end
+
+	def first_last
+		first_name + ' ' + last_name
+	end 
+
+
+	def last_first
+		last_first=last_name
+		last_first+=", "
+		last_first+=first_name
+		if !@middle_name.nil?
+			last_first += " "
+			last_first += middle_name.slice(0,1)
+			last_first += "."
+		end 
+		last_first
+
+	end
 
 	def full_name
 		full_name = first_name
@@ -33,6 +65,17 @@ class Contact
 	josh.middle_name="Dodge"
 	josh.last_name="Woodward"
 
-	puts josh.first_name + " " + josh.last_name
-	puts josh.full_name
+	scott=Contact.new
+	scott.first_name="Scott"
+	scott.last_name="Jacoby"
+
+
+	puts josh.to_s('full_name')
+	puts josh.to_s('last_first')
+	puts josh.to_s('first_last')
+
+	puts scott.to_s('full_name')
+	puts scott.to_s('last_first')	
+	puts scott.to_s('first_last')
+
 end 
