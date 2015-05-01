@@ -22,13 +22,3 @@ class Address
 
 end 
 
-home=Address.new
-home.kind="Home"
-home.street_1="200 Example St."
-home.city="Nowhere"
-home.state="PA"
-home.postal_code="89456"
-
-puts home
-puts "\n"
-puts home.to_s('long')
