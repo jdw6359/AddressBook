@@ -9,6 +9,46 @@ class AddressBook
 	end 
 
 
+	def run
+		loop do
+
+			puts "Address Book"
+			puts "a: Add Contact"
+			puts "p: Print Address Book"
+			puts "e: Exit"
+
+			print "Enter your choice: "
+			input = gets.chomp.downcase
+
+			case input
+			when 'e'
+				break
+			when 'p'
+				print_contact_list
+			when 'a'
+				add_contact
+			end 
+
+		end 
+	end 
+
+	def add_contact
+		contact=Contact.new
+		
+		print "First Name: "
+		contact.first_name=gets.chomp
+
+		print "Middle Name: "
+		contact.middle_name=gets.chomp
+
+		print "Last Name: "
+		contact.last_name=gets.chomp
+
+		contacts.push(contact)
+
+	end 
+
+
 	def print_results(search,results)
 		puts "#{search}"
 		results.each do |contact|
@@ -77,32 +117,4 @@ end
 
 
 address_book=AddressBook.new
-	
-josh=Contact.new
-josh.first_name="Josh"
-josh.middle_name="Dodge"
-josh.last_name="Woodward"
-josh.add_phone_number("Home","123-456-7890")
-josh.add_phone_number("Work","000-123-4567")
-josh.add_address("Home", "200 Example St.", " ", "Nowhere", "PA", "89456")
-
-scott=Contact.new
-scott.first_name="Scott"
-scott.middle_name="Rumor"
-scott.last_name="Jacoby"
-scott.add_phone_number("Home","555-555-5555")
-scott.add_phone_number("Cell","1-800-867-5309")
-scott.add_address("Work", "365 Business Avenue", "Suite #678 ", "NY", "NY", "12345")
-
-
-
-
-address_book.contacts.push(josh)
-address_book.contacts.push(scott)
-#address_book.print_contact_list
-
-address_book.find_by_name("jos")
-address_book.find_by_name("scot")
-address_book.find_by_phone_number("456")
-address_book.find_by_phone_number("00")
-address_book.find_by_address("busi")
+address_book.run
