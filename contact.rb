@@ -98,19 +98,4 @@ class Contact
 		full_name
 	end 
 
-
-	josh=Contact.new
-	josh.first_name="Josh"
-	josh.middle_name="Dodge"
-	josh.last_name="Woodward"
-	josh.add_phone_number("Home","123-456-7890")
-	josh.add_phone_number("Work","000-123-4567")
-	josh.add_address("Home", "200 Example St.", " ", "Nowhere", "PA", "89456")
-
-	puts josh.to_s('full name')
-	josh.print_phone_numbers
-	josh.print_addresses
-
-
-	
 end 
