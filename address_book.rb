@@ -1,4 +1,5 @@
 require './contact'
+require "yaml"
 
 class AddressBook
 
@@ -6,8 +7,20 @@ class AddressBook
 
 	def initialize
 		@contacts=[]
+		open()
 	end 
 
+	def open
+		if File.exists?("contacts.yml")
+			@contacts=YAML.load_file("contacts.yml")
+		end
+	end 
+
+	def save
+		File.open("contacts.yml","w") do |file|
+			file.write(contacts.to_yaml)
+		end 
+	end 
 
 	def run
 		loop do
@@ -23,6 +36,7 @@ class AddressBook
 
 			case input
 			when 'e'
+				save()
 				break
 			when 'p'
 				print_contact_list
