@@ -14,6 +14,7 @@ class AddressBook
 
 			puts "Address Book"
 			puts "a: Add Contact"
+			puts "s: Search"
 			puts "p: Print Address Book"
 			puts "e: Exit"
 
@@ -27,6 +28,35 @@ class AddressBook
 				print_contact_list
 			when 'a'
 				add_contact
+			
+			when 's'
+
+				puts 'n: Search by name'
+				puts 'p: Search by phone number'
+				puts 'a: Search by address'
+				
+				print 'Search Attribute: '
+				attribute=gets.chomp
+
+
+				case attribute
+				when 'n'
+					print 'Search Term: '
+					search=gets.chomp
+					find_by_name(search)				
+				
+				when 'p'
+					print 'Search Term: '
+					search=gets.chomp
+					find_by_phone_number(search)
+
+				when 'a'
+					print 'Search Term: '
+					search=gets.chomp	
+					find_by_address(search)
+
+				else
+				end
 			end 
 
 		end 
