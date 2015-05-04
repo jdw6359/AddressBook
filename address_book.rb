@@ -44,6 +44,50 @@ class AddressBook
 		print "Last Name: "
 		contact.last_name=gets.chomp
 
+		loop do
+			puts "Add phone number or address? "
+			puts "p: Add Phone Number"
+			puts "a: Add address"
+			puts "(Any other key to go back)"
+			response=gets.chomp.downcase
+			case response
+			when 'p'
+
+				print "Kind: "
+				kind=gets.chomp
+
+				print "Number: "
+				number=gets.chomp
+
+				contact.add_phone_number(kind, number)
+
+			when 'a'
+
+				print "Kind: "
+				kind=gets.chomp
+
+				print "Street 1: "
+				street1=gets.chomp
+
+				print "Street 2: "
+				street2=gets.chomp
+
+				print "City: "
+				city=gets.chomp
+
+				print "State: "
+				state=gets.chomp
+
+				print "Postal Code: "
+				postal_code=gets.chomp
+
+				contact.add_address(kind, street1, street2, city, state, postal_code)
+
+			else
+				break
+			end 
+		end 
+
 		contacts.push(contact)
 
 	end 
